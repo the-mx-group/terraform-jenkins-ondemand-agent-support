@@ -2,7 +2,7 @@ output "security_group_name" {
   value = aws_security_group.jenkins-build-agent.name
   description = "The name of the security group for nodes"
 }
-output "security-group-id" {
+output "security_group_id" {
   value = aws_security_group.jenkins-build-agent.id
   description = "The ID of the security group for nodes"
 }
