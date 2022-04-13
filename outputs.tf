@@ -1,7 +1,3 @@
-output "vpc_id" {
-  value = ""
-  description = "The VPC in which the security group lives"
-}
 output "security_group_name" {
   value = ""
   description = "The name of the security group for nodes"
