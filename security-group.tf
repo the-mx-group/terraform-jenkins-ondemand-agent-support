@@ -1,7 +1,7 @@
 resource "aws_security_group" "jenkins-build-agent" {
 
   name   = "${var.name_prefix}jenkins-build-agent"
-  vpc_id = aws_default_vpc.default.id
+  vpc_id = var.vpc_id
 
   tags = {
     Name = "${var.name_prefix}jenkins-build-agent"
