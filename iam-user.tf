@@ -65,7 +65,7 @@ resource "aws_iam_user_policy" "jenkins-build-agent-manager-spot-policy" {
                 "ec2:CancelSpotFleetRequests",
                 "ec2:DescribeSpotFleetRequests",
                 "ec2:DescribeSpotFleetInstances",
-                "ec2:DescribeSpotInstanceRequests",
+                "ec2:DescribeSpotInstanceRequests"
             ],
             "Effect": "Allow",
             "Resource": "*"
