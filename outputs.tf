@@ -18,3 +18,7 @@ output "access_secret" {
   value = aws_iam_access_key.jenkins-build-agent-manager.secret
   description = "The IAM secret which Jenkins will use to create instances"
 }
+output "instance_iam_role_arn" {
+  value = aws_iam_role.jenkins-build-agent-instance.arn
+  description = "The ARN of the role that nodes with this instance profile will assume"
+}
