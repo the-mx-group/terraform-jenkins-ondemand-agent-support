@@ -30,3 +30,9 @@ variable "instance_profile_policies" {
 	default = []
 	description = "Specifies additional managed policies to attach to the instance profile for agent nodes."
 }
+
+variable "tags" {
+  type = map(string)
+  default = {}
+  description = "A map of tags to apply to all resources created by this module"
+}

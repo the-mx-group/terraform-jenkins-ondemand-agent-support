@@ -1,6 +1,7 @@
 resource "aws_iam_user" "jenkins-build-agent-manager" {
   name = "${var.name_prefix}jenkins-build-agent-manager"
   path = "/cicd/"
+  tags = var.tags
 }
 
 resource "aws_iam_access_key" "jenkins-build-agent-manager" {

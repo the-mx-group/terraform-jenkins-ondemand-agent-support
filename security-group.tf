@@ -3,9 +3,9 @@ resource "aws_security_group" "jenkins-build-agent" {
   name   = "${var.name_prefix}jenkins-build-agent"
   vpc_id = var.vpc_id
 
-  tags = {
+  tags = merge(var.tags, {
     Name = "${var.name_prefix}jenkins-build-agent"
-  }
+  })
 
   ingress {
     from_port   = 0

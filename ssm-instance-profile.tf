@@ -2,9 +2,9 @@ resource "aws_iam_role" "jenkins-build-agent-instance" {
   name        = "${var.name_prefix}jenkins-build-agent-instance"
   description = "Hosts dynamically created for Jenkins EC2 builders"
 
-  tags = {
+  tags = merge(var.tags, {
     Name = "${var.name_prefix} Jenkins Agent Instance"
-  }
+  })
 
   assume_role_policy = jsonencode(
     {
@@ -29,4 +29,5 @@ resource "aws_iam_role" "jenkins-build-agent-instance" {
 resource "aws_iam_instance_profile" "jenkins-build-agent" {
   name        = "${var.name_prefix}jenkins-build-agent"
   role = aws_iam_role.jenkins-build-agent-instance.name
+  tags = var.tags
 }
