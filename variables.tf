@@ -26,7 +26,7 @@ variable "allow_spot_instances" {
 }
 
 variable "instance_profile_policies" {
-	type = list(string)
+	type = set(string)
 	default = []
 	description = "Specifies additional managed policies to attach to the instance profile for agent nodes."
 }

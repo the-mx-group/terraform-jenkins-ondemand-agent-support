@@ -20,14 +20,21 @@ resource "aws_iam_role" "jenkins-build-agent-instance" {
       Version = "2012-10-17"
     }
   )
+}
 
-  managed_policy_arns = concat(var.instance_profile_policies, [
-    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-  ])
+resource "aws_iam_role_policy_attachment" "jenkins-build-agent-instance-ssm" {
+  role = aws_iam_role.jenkins-build-agent-instance.name
+  policy_arn =   "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
+resource "aws_iam_role_policy_attachment" "jenkins-build-agent-instance-ec2" {
+  for_each = var.instance_profile_policies
+  role = aws_iam_role.jenkins-build-agent-instance.name
+  policy_arn = each.value
 }
 
 resource "aws_iam_instance_profile" "jenkins-build-agent" {
-  name        = "${var.name_prefix}jenkins-build-agent"
+  name = "${var.name_prefix}jenkins-build-agent"
   role = aws_iam_role.jenkins-build-agent-instance.name
   tags = var.tags
 }
