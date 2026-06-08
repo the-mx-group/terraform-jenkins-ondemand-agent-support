@@ -14,6 +14,12 @@ variable "source_blocks" {
   description = "IP blocks which should be allowed to connect to the build hosts via SSH"
 }
 
+variable "source_groups" {
+  type = list(string)
+  default = []
+  description = "Security groups which should be allowed to connect to the build hosts via SSH"
+}
+
 variable "ssh_pubkey" {
 	type = string
 	description = "The SSH public key to use to connect to agent instances."
