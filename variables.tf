@@ -42,3 +42,9 @@ variable "tags" {
   default = {}
   description = "A map of tags to apply to all resources created by this module"
 }
+
+variable "controller_role_arns" {
+  type        = list(string)
+  default     = ["arn:aws:iam::475177836454:role/jenkins-controller"]
+  description = "IAM roles the Jenkins controller runs as (by default the MX devops account's ECS task role). They are trusted to assume the agent manager role this module creates, which lets the controller launch agents without a stored access key. Set to [] to skip creating the role."
+}

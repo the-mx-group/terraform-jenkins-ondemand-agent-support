@@ -22,3 +22,7 @@ output "instance_iam_role_arn" {
   value = aws_iam_role.jenkins-build-agent-instance.arn
   description = "The ARN of the role that nodes with this instance profile will assume"
 }
+output "controller_agent_manager_role_arn" {
+  value       = try(aws_iam_role.jenkins-controller-agent-manager[0].arn, null)
+  description = "ARN of the role the Jenkins controller assumes to launch agents (EC2 cloud roleArn), or null if controller_role_arns is empty"
+}
